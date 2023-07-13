@@ -17,8 +17,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     with conn:
         print("Connected to ", str(addr))
         data = conn.recv(1024)
-        if data.decode('UTF-8') is "network":
-            msg = "ACK"
+        print("Client: " + data.decode('UTF-8'))
+        if data.decode('UTF-8') == "network":
+            msg = "success"
             conn.sendall(msg.encode('UTF-8'))
         # while data:
         #     print("Client: " + data.decode())
